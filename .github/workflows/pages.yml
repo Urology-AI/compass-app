@@ -1,8 +1,11 @@
-name: Deploy to GitHub Pages
+# Publishes only the static app (avoids uploading .git / dev files into the Pages artifact).
+# Repo: https://github.com/Urology-AI/compass-app
+name: Deploy static content to Pages
 
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -20,10 +23,22 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepare site root
+        run: |
+          mkdir -p _site
+          cp index.html _site/
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: .
-      - uses: actions/deploy-pages@v4
+          path: _site
+
+      - name: Deploy to GitHub Pages
         id: deployment
+        uses: actions/deploy-pages@v5

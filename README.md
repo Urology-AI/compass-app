@@ -1,16 +1,18 @@
-# Digital Twin
+# COMPASS
 
-This repository contains a static 3D Compass webpage intended to be hosted on GitHub Pages.
+Static **COMPASS** digital-twin web app (single-page, Three.js). This repo is **`Urology-AI/compass-app`**.
 
-## Project File
+## Live site (GitHub Pages)
 
-- `index.html` - main page served by GitHub Pages.
+After deployment finishes, the app is served at:
 
-## Run Locally
+**https://urology-ai.github.io/compass-app/**
 
-Open `index.html` in your browser, or serve the folder with a simple static server.
+If that URL 404s, confirm the workflow run succeeded (see below) and that Pages is configured to use **GitHub Actions**.
 
-Example with Python:
+## Run locally
+
+Open `index.html` in a browser, or serve the folder:
 
 ```bash
 python3 -m http.server 8080
@@ -18,15 +20,31 @@ python3 -m http.server 8080
 
 Then open `http://localhost:8080`.
 
-## Deploy to GitHub Pages
+## Deploy (GitHub Actions)
 
-1. Push this repository to GitHub.
-2. In GitHub, open **Settings -> Pages**.
-3. Under **Build and deployment**, choose:
-   - **Source:** Deploy from a branch
-   - **Branch:** `main` / `(root)`
-4. Save and wait for deployment.
+Deployment runs automatically on every push to `main` via [`.github/workflows/pages.yml`](.github/workflows/pages.yml).
 
-Your site URL will be:
+### One-time setup on GitHub
 
-`https://<your-username>.github.io/<your-repo>/`
+1. Open **Settings → Pages** for this repository.
+2. Under **Build and deployment**, set **Source** to **GitHub Actions** (not “Deploy from a branch”).
+3. Push to `main` or run the workflow manually: **Actions → Deploy static content to Pages → Run workflow**.
+
+### Check that it worked
+
+- **Actions** tab: the latest **Deploy static content to Pages** run should be green.
+- Open the run → **deploy** job → the **Deploy to GitHub Pages** step shows the published URL.
+
+## Repository layout
+
+| Path | Purpose |
+|------|---------|
+| `index.html` | Full app (UI, logic, embedded data handling). |
+| `.github/workflows/pages.yml` | Builds a minimal `_site` with `index.html` and publishes to Pages. |
+
+## Remote
+
+```bash
+git remote -v
+# origin  git@github.com:Urology-AI/compass-app.git
+```
