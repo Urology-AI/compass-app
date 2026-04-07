@@ -78,14 +78,13 @@ body {
   -webkit-backdrop-filter: blur(20px);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 16px;
   padding: 0 20px;
   position: sticky;
   top: 0;
   z-index: 200;
   flex-shrink: 0;
 }
-.header-brand { display: flex; align-items: center; gap: 12px; }
 .logo {
   font-family: var(--ff-display);
   font-size: 1.55em;
@@ -112,18 +111,6 @@ body {
   color: var(--text-2);
   font-weight: 500;
   white-space: nowrap;
-}
-.pulse-dot {
-  width: 7px; height: 7px;
-  background: var(--teal);
-  border-radius: 50%;
-  box-shadow: 0 0 8px var(--teal);
-  animation: pulse 2.5s ease-in-out infinite;
-  flex-shrink: 0;
-}
-@keyframes pulse {
-  0%,100% { opacity:1; transform:scale(1); }
-  50%      { opacity:0.4; transform:scale(0.8); }
 }
 
 /* ─────────────────────────────────────────────────────

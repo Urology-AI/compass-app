@@ -304,16 +304,9 @@ export default function App() {
 
       {/* ── HEADER ──────────────────────────────────── */}
       <header className="app-header">
-        <div className="header-brand">
-          <div className="logo">COMPASS</div>
-          <div className="logo-tagline">
-            Functional Outcomes Module<br />
-            Post-Radical Prostatectomy
-          </div>
-        </div>
-        <div className="inst-badge">
-          <div className="pulse-dot" />
-          <span>Mount Sinai · Tewari Lab</span>
+        <div className="logo">COMPASS</div>
+        <div className="logo-tagline">
+          Functional Outcomes · Post-Radical Prostatectomy
         </div>
       </header>
 
